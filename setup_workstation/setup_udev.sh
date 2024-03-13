@@ -3,6 +3,10 @@
 sudo tee /etc/udev/rules.d/70-usb-to-serial.rules > /dev/null <<'EOF'
 # CP2101 - CP 2104
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE="600", TAG+="uaccess", SYMLINK+="usb2ser_%n"
+# FT232
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE:="600", TAG:="uaccess", SYMLINK+="ft232_%n"
+# FT2232
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6010", MODE:="600", TAG:="uaccess", SYMLINK+="ft2232_%n"
 EOF
 
 sudo tee /etc/udev/rules.d/70-st-link.rules > /dev/null <<'EOF'
